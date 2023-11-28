@@ -23,22 +23,22 @@ const ProductsPage = ({ categories }) => {
   useEffect(() => {
     switch (category) {
       case "clothing": {
-        const clothing = categories?.children[2]?.children[1];
+        const clothing = categories?.children[1]?.children[1];
         setCategoryProducts(clothing, [6, 19, 4, 5]);
         return;
       }
       case "accessories": {
-        const accessories = categories?.children[3]?.children[2];
+        const accessories = categories?.children[2]?.children[2];
         setCategoryProducts(accessories, [3, 11, 13]);
         return;
       }
       case "footwear": {
-        const footewear = categories?.children[7]?.children[1];
+        const footewear = categories?.children[3]?.children[1];
         setCategoryProducts(footewear, [3, 9, 4]);
         return;
       }
       case "sale": {
-        const saleProducts = categories?.children[15]?.children[1];
+        const saleProducts = categories?.children[13]?.children[1];
         setCategoryProducts(saleProducts, [0], 20);
         return;
       }

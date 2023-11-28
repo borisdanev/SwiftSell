@@ -5,13 +5,16 @@ const NewProducts = ({ category }) => {
   const [products, setProducts] = useState([]);
   const { productsList, isLoading } = useGetProducts(products, 8);
   useEffect(() => {
+    console.log(category);
     const newProducts = [
       category?.children[2]?.children[1]?.children[4],
       category?.children[2]?.children[1]?.children[7],
     ];
     setProducts(newProducts);
   }, [category]);
-  useEffect(() => {}, [isLoading]);
+  useEffect(() => {
+    console.log(productsList);
+  }, [productsList]);
   let list;
   if (isLoading) list = Array(4).fill(null);
   else list = productsList;
