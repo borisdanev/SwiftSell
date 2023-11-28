@@ -33,7 +33,8 @@ const useFetchData = (url) => {
         setData(data);
         setIsLoading(false);
       } catch (err) {
-        const currentKeyIndex = (currentKey + 1) % keys.length;
+        const currentKeyIndex =
+          currentKey < keys.length ? currentKey + 1 : currentKey;
         setCurrentKey(currentKeyIndex);
         setError(err);
         setIsLoading(false);
