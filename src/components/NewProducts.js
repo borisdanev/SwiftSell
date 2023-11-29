@@ -7,8 +7,8 @@ const NewProducts = ({ category }) => {
   useEffect(() => {
     console.log(category);
     const newProducts = [
-      category?.children[2]?.children[1]?.children[4],
-      category?.children[2]?.children[1]?.children[7],
+      category?.children[1]?.children[1]?.children[4],
+      category?.children[1]?.children[1]?.children[7],
     ];
     setProducts(newProducts);
   }, [category]);
