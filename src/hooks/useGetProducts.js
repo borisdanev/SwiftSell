@@ -14,8 +14,13 @@ const useGetProducts = (products, length, query) => {
     urls.forEach((url) => fetchData(url));
   }, [products, query, fetchData]);
   useEffect(() => {
-    if (data?.itemCount && productsList.length < length)
-      setProductsList([...productsList, data.products].flat());
+    if (data?.itemCount) {
+      if (query) setProductsList(data.products);
+      else {
+        if (productsList.length < length)
+          setProductsList([...productsList, data.products].flat());
+      }
+    }
   }, [data]);
   return { isLoading, productsList };
 };
