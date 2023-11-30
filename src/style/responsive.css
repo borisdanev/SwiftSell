@@ -22,10 +22,6 @@
   }
 }
 @media (max-width: 768px) {
-  .categories .rounded-circle {
-    width: 10rem;
-    height: 10rem;
-  }
   .search-bar {
     width: 10%;
   }

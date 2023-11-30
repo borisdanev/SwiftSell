@@ -13,7 +13,7 @@ const Categories = () => {
         <p className="h2 mb-5 text-success">Select Category</p>
         <div className="row position-relative">
           <div
-            className="col-md-6 child position-relative p-0"
+            className="col-6 child position-relative p-0"
             onClick={() => handleClick("clothing")}
           >
             <img src={Clothing} className="img-fluid h-100" />
@@ -24,7 +24,7 @@ const Categories = () => {
               Clothing
             </p>
           </div>
-          <div className="col-md-6 child p-0">
+          <div className="col-6 child p-0">
             <div className="row h-100">
               {[
                 { category: "accessories", img: Accessories },
@@ -50,7 +50,7 @@ const Categories = () => {
             </div>
           </div>
           <div className="p-4 rounded-circle position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center bg-dark">
-            <p className="fs-3 m-0 text-white text-center">Fit Yourself</p>
+            <p className="m-0 text-white text-center">Fit Yourself</p>
           </div>
         </div>
       </div>

@@ -19,7 +19,6 @@ const ProductsList = ({ productList, loading, oneRow, cart }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
-  useEffect(() => {}, [productList, loading]);
   const totalPages = Math.ceil(productList.length / productsPerPage);
   return (
     <div className="container product-list">

@@ -143,7 +143,10 @@ input:focus {
   z-index: 99;
 }
 .categories .row .child {
-  height: 430px;
+  height: clamp(22rem, 30vw, 26.87rem);
+}
+.categories .row .child p {
+  font-size: clamp(1.2rem, 2.1vw, 2rem) !important;
 }
 .categories img {
   height: 100%;
@@ -153,8 +156,9 @@ input:focus {
   cursor: pointer;
 }
 .categories .rounded-circle {
-  width: 12rem;
-  height: 12rem;
+  width: clamp(6.5rem, 20vw, 12rem);
+  height: clamp(6.5rem, 20vw, 12rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 .brand {
   background-color: rgb(234, 234, 234);
