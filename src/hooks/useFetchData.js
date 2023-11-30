@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
 const keys = [
-  "e945ffd961msh5218c71932331c2p1e8be1jsn02c78c91a254",
   "088057eebfmsh60fe870e73fc82ap1cf1ccjsn526efa1d0f6b",
   "464dfbedc2mshfa34e6291274bf3p110264jsn2136c8c250a7",
   "e4bb5e8b98msh11bbe8e3436b6bdp177755jsn371bb4f3c0da",
@@ -9,14 +8,16 @@ const keys = [
   "742a0f9453msh3485f2c5c773787p14b320jsn915ba24bc924",
   "05af4455aamshc28fa602c8aa46ap1e663cjsn048569db156c",
   "f053ecf726msh9a02edc79a31796p18ef39jsnf7d624b40736",
+  "e945ffd961msh5218c71932331c2p1e8be1jsn02c78c91a254",
 ];
 const useFetchData = (url) => {
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentKey, setCurrentKey] = useState(0);
   const fetchData = useCallback(
     async (innerUrl = url) => {
+      setIsLoading(true);
       const options = {
         method: "GET",
         headers: {

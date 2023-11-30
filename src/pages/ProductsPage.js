@@ -46,6 +46,9 @@ const ProductsPage = ({ categories }) => {
     const brand = categories?.children[5]?.children[1];
     setCategoryProducts(brand, [brandId], 30);
   }, [categories]);
+  useEffect(() => {
+    console.log(productsList);
+  }, [productsList]);
   let list;
   if (isLoading) list = Array(8).fill(null);
   else list = productsList;

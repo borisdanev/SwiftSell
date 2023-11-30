@@ -23,10 +23,10 @@ const HomePage = ({ setInputValue, category }) => {
     <>
       <StartSlider />
       <CategoriesList />
-      {/* <NewProducts category={category} /> */}
+      <NewProducts category={category} />
       <BrandList />
       <Offer />
-      {/* <BestsellerList category={category} /> */}
+      <BestsellerList category={category} />
       <ServiceList />
     </>
   );

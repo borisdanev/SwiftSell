@@ -17,7 +17,6 @@ const SearchBar = () => {
     setValue(e.target.value);
   };
   const handleSubmit = (value) => {
-    console.log("here");
     setValue(value);
     setVisibleSuggestions(false);
     setClicked(false);
