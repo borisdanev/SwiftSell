@@ -11,7 +11,7 @@ const ServiceList = () => {
           <div className="col-md-4">
             <Service
               text="Fast & Free Shipping"
-              icon={<img src={Delivery} />}
+              icon={<img src={Delivery} alt="service icon" />}
             />
           </div>
           <div className="col-md-4">
@@ -19,7 +19,7 @@ const ServiceList = () => {
               <div className="col-12">
                 <Service
                   full={false}
-                  icon={<img src={Support} />}
+                  icon={<img src={Support} alt="service icon" />}
                   text="24/7 Customer Support"
                 />
               </div>
@@ -27,7 +27,7 @@ const ServiceList = () => {
                 <Service
                   full={false}
                   text="Easy Returns and Exchanges"
-                  icon={<img src={Return} />}
+                  icon={<img src={Return} alt="service icon" />}
                 />
               </div>
             </div>
@@ -35,7 +35,7 @@ const ServiceList = () => {
           <div className="col-md-4">
             <Service
               text="Secure Payment System"
-              icon={<img src={Security} />}
+              icon={<img src={Security} alt="service icon" />}
             />
           </div>
         </div>

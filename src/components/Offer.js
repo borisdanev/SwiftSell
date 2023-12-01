@@ -7,7 +7,7 @@ const Offer = () => {
       <div className="container p-0">
         <div className="row g-0">
           <div className="d-none d-md-block col-md-6 order-1 order-md-0">
-            <img className="img-fluid rounded-start" src={Image} />
+            <img className="img-fluid rounded-start" src={Image} alt="offer" />
           </div>
           <div className="col-md-6 order-0 ">
             <div className="bg-dark py-5 px-4 h-100 rounded-end">

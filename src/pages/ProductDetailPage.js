@@ -43,6 +43,7 @@ const ProductDetailPage = () => {
                 <img
                   className="img-fluid mb-3 w-100"
                   src={`http://${selectedImage}`}
+                  alt="selected product"
                 />
               </ConditionalLoader>
               {screenWidth > 768 && (
@@ -57,6 +58,7 @@ const ProductDetailPage = () => {
                           className="img-fluid w-100"
                           src={`http://${image.url}`}
                           onClick={() => setSelectedImage(image.url)}
+                          alt="product"
                         />
                       </ConditionalLoader>
                     </div>
@@ -167,7 +169,11 @@ const ProductDetailPage = () => {
                     <div
                       className={`p-3 bg-light ${i === 1 ? "border-top" : ""}`}
                     >
-                      <img src={item.src} className="icon me-3" />
+                      <img
+                        src={item.src}
+                        className="icon me-3"
+                        alt="service icon"
+                      />
                       <span>{item.text}</span>
                     </div>
                   </ConditionalLoader>

@@ -18,7 +18,11 @@ const SavedProduct = ({ product, name, img, price, isOutletPrice }) => {
         <GrClose style={{ cursor: "pointer" }} />
       </span>
       <div className="col-lg-3">
-        <img src={`http://${img}`} className="product-img img-fluid" />
+        <img
+          src={`http://${img}`}
+          className="product-img img-fluid"
+          alt="product "
+        />
       </div>
       <div className="col-lg-8">
         <div className="d-flex justify-content-between align-items-start">

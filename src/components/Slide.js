@@ -9,7 +9,7 @@ const Slide = ({ src, text }) => {
         Go Shopping
       </Button>
       <div className="layer "></div>
-      <img className="img-fluid" src={src} />
+      <img className="img-fluid" src={src} alt="slide" />
     </div>
   );
 };

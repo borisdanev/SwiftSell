@@ -4,7 +4,7 @@ const Product = ({ src, title, price, isOutletPrice, id, headerRef }) => {
   return (
     <div className="product pt-4 pb-3 pb-sm-5">
       <Link to={`/product?id=${id}`}>
-        <img src={`https://${src}`} className="img-fluid w-100" />
+        <img src={`https://${src}`} className="img-fluid w-100" alt="product" />
       </Link>
       <div className="content">
         <Link className="text-dark" to={`/product?id=${id}`}>

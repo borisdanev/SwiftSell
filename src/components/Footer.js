@@ -52,7 +52,12 @@ const Footer = () => {
             <p className="h5">Accepted Payments</p>
             <div className="d-flex payments justify-content-center justify-content-md-start">
               {[Visa, PayPal, Stripe, iPay].map((item) => (
-                <img key={item} src={item} className="img-fluid me-3" />
+                <img
+                  key={item}
+                  src={item}
+                  className="img-fluid me-3"
+                  alt="payment service logo"
+                />
               ))}
             </div>
           </div>

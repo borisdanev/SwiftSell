@@ -47,7 +47,12 @@ const CartPage = () => {
                   <p className="h5">We Accept:</p>
                   <div className="d-flex payments">
                     {[Visa, PayPal, Stripe, iPay].map((src) => (
-                      <img key={src} src={src} className="img-fluid me-2" />
+                      <img
+                        key={src}
+                        src={src}
+                        className="img-fluid me-2"
+                        alt="paymets service logo"
+                      />
                     ))}
                   </div>
                 </div>

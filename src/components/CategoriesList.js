@@ -16,7 +16,11 @@ const Categories = () => {
             className="col-6 child position-relative p-0"
             onClick={() => handleClick("clothing")}
           >
-            <img src={Clothing} className="img-fluid h-100" />
+            <img
+              src={Clothing}
+              className="img-fluid h-100"
+              alt="category image"
+            />
             <p
               className="position-absolute text-white h2 top-50 start-50 translate-middle"
               style={{ cursor: "pointer" }}
@@ -37,7 +41,7 @@ const Categories = () => {
                   }`}
                   onClick={() => handleClick(item.category)}
                 >
-                  <img src={item.img} className="img-fluid" />
+                  <img src={item.img} className="img-fluid" alt="category" />
                   <p
                     className="position-absolute text-white h2 top-50 start-50 translate-middle"
                     style={{ cursor: "pointer" }}
