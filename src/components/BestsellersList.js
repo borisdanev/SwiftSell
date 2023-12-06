@@ -1,9 +1,10 @@
 import useGetProducts from "../hooks/useGetProducts";
 import { useEffect, useState } from "react";
 import ProductsList from "./ProductsList";
+import Error from "./Error";
 const BestsellerList = ({ category }) => {
   const [products, setProducts] = useState([]);
-  const { productsList, isLoading } = useGetProducts(products, 8);
+  const { productsList, isLoading, error } = useGetProducts(products, 8);
   useEffect(() => {
     const bestSellers = [
       category?.children[4]?.children[1]?.children[0],
@@ -19,7 +20,11 @@ const BestsellerList = ({ category }) => {
       <div className="container">
         <p className="h2 text-success">Bestsellers</p>
       </div>
-      <ProductsList productList={list} loading={isLoading} oneRow />
+      {error ? (
+        <Error error={error} />
+      ) : (
+        <ProductsList productList={list} loading={isLoading} oneRow />
+      )}
     </section>
   );
 };

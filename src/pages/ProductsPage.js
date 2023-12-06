@@ -5,6 +5,7 @@ import useSetProducts from "../hooks/useSetProducts";
 import { MyContext } from "../contexts/MyContext";
 import ProductsList from "../components/ProductsList";
 import ServiceList from "../components/ServiceList";
+import Error from "../components/Error";
 const ProductsPage = ({ categories }) => {
   const location = useLocation();
   const { setPathname } = useContext(MyContext);
@@ -15,7 +16,11 @@ const ProductsPage = ({ categories }) => {
   const [products, setProducts] = useState([]);
   const [length, setLength] = useState(30);
   const setCategoryProducts = useSetProducts(setProducts, setLength);
-  const { productsList, isLoading } = useGetProducts(products, length, query);
+  const { productsList, isLoading, error } = useGetProducts(
+    products,
+    length,
+    query
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
     setPathname(location.pathname);
@@ -55,7 +60,11 @@ const ProductsPage = ({ categories }) => {
   return (
     <>
       <section className="p-0 p-md-5">
-        <ProductsList productList={list} loading={isLoading} />
+        {error ? (
+          <Error error={error} />
+        ) : (
+          <ProductsList productList={list} loading={isLoading} />
+        )}
         <ServiceList />
       </section>
     </>

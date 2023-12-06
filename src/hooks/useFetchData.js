@@ -37,8 +37,10 @@ const useFetchData = (url) => {
         setIsLoading(false);
       } catch (err) {
         const currentKeyIndex = (currentKey + 1) % keys.length;
-        setCurrentKey(currentKeyIndex);
-        setError(err);
+        console.log(currentKeyIndex);
+        if (currentKeyIndex < keys.length - 1) setCurrentKey(currentKeyIndex);
+        else setError("Products failed to load");
+        // setError(err);
         setIsLoading(false);
       }
     },

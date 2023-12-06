@@ -1,9 +1,11 @@
-import ProductsList from "./ProductsList";
-import useGetProducts from "../hooks/useGetProducts";
 import { useEffect, useState } from "react";
+import useGetProducts from "../hooks/useGetProducts";
+import ProductsList from "./ProductsList";
+import Error from "./Error";
 const NewProducts = ({ category }) => {
   const [products, setProducts] = useState([]);
-  const { productsList, isLoading } = useGetProducts(products, 8);
+  const { productsList, isLoading, error } = useGetProducts(products, 8);
+  console.log(error);
   useEffect(() => {
     const newProducts = [
       category?.children[1]?.children[1]?.children[4],
@@ -19,7 +21,11 @@ const NewProducts = ({ category }) => {
       <div className="container">
         <p className="h2 text-success">New Products</p>
       </div>
-      <ProductsList productList={list} loading={isLoading} oneRow />
+      {error ? (
+        <Error error={error} />
+      ) : (
+        <ProductsList productList={list} loading={isLoading} oneRow />
+      )}
     </section>
   );
 };

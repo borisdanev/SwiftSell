@@ -14,13 +14,13 @@ const useGetProducts = (products, length, query) => {
     urls.forEach((url) => fetchData(url));
   }, [products, query, fetchData]);
   useEffect(() => {
-    if(!data?.itemCount) return;
-      if (query) setProductsList(data.products);
-      else {
-        if (productsList.length < length)
-          setProductsList([...productsList, data.products].flat());
-      }
+    if (!data?.itemCount) return;
+    if (query) setProductsList(data.products);
+    else {
+      if (productsList.length < length)
+        setProductsList([...productsList, data.products].flat());
+    }
   }, [data]);
-  return { isLoading, productsList };
+  return { isLoading, productsList, error };
 };
 export default useGetProducts;
