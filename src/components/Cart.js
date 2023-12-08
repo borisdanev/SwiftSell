@@ -1,14 +1,27 @@
+import { useContext } from "react";
+import { MyContext } from "../contexts/MyContext";
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useScreenWidth from "../hooks/useScreenWidth";
 const Cart = () => {
-  const screenWidth = useScreenWidth();
+  const { cart } = useContext(MyContext);
   return (
     <div className="cart-icon fs-3 position-relative">
-      <div>
+      <div className="position-relative">
         <Link className="text-dark" to="/cart">
           <FaCartPlus />
-          {screenWidth > 768 && <span className="ms-2">Cart</span>}
+          <div
+            style={{
+              left: "1rem",
+              fontSize: "0.7rem",
+              height: "1.2rem",
+              width: "1.2rem",
+            }}
+            className="position-absolute top-0 rounded-circle bg-danger
+            d-flex align-items-center justify-content-center text-white"
+          >
+            {cart.length}
+          </div>
         </Link>
       </div>
     </div>
