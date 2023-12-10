@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { MyContext } from "../contexts/MyContext";
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useScreenWidth from "../hooks/useScreenWidth";
 const Cart = () => {
   const { cart } = useContext(MyContext);
   return (

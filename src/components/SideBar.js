@@ -1,7 +1,3 @@
-import { BiCategory } from "react-icons/bi";
-import { TbTruckDelivery } from "react-icons/tb";
-import { MdOutlineProductionQuantityLimits } from "react-icons/md";
-import { SiNike } from "react-icons/si";
 import { useSpring, animated } from "react-spring";
 import Navlinks from "./Navlinks";
 const SideBar = ({ isOpen }) => {
@@ -31,7 +27,6 @@ const SideBar = ({ isOpen }) => {
           <Navlinks className="mb-3" />
         </animated.ul>
       </animated.div>
-      {/* <animated.p className="h5">Social Media</animated.p> */}
     </animated.div>
   );
 };

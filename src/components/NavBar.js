@@ -15,11 +15,14 @@ const NavBar = () => {
         <div className="row align-items-center">
           <div className="col-4 col-md-3 col-lg-1 d-flex align-items-center">
             {screenWidth < 991 && (
-              <span className="burger-menu" onClick={() => setIsOpen(!isOpen)}>
+              <span
+                style={{ position: isOpen && "fixed", top: isOpen && "0.8rem" }}
+                className="burger-menu"
+                onClick={() => setIsOpen(!isOpen)}
+              >
                 <Hamburger
-                  style={{ display: "none" }}
                   toggled={isOpen}
-                  className={`${isOpen ? "position-fixed top-0" : ""}`}
+                  className={`something"}`}
                   color={`${isOpen ? "#FFFFFF" : "#000000"}`}
                 />
               </span>

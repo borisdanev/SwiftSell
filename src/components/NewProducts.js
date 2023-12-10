@@ -5,7 +5,6 @@ import Error from "./Error";
 const NewProducts = ({ category }) => {
   const [products, setProducts] = useState([]);
   const { productsList, isLoading, error } = useGetProducts(products, 8);
-  console.log(error);
   useEffect(() => {
     const newProducts = [
       category?.children[1]?.children[1]?.children[4],
