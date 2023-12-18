@@ -1,5 +1,7 @@
 import { useSpring, animated } from "react-spring";
 import Navlinks from "./Navlinks";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 const SideBar = ({ isOpen }) => {
   const parentSpring = useSpring({
     maxWidth: isOpen ? 1000 : 0,

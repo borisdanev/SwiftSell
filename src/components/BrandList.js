@@ -43,7 +43,7 @@ const BrandList = () => {
               ))
             : [brands.slice(0, 4), brands.slice(4)].map((arr, i) => (
                 <div key={i} className="col-12">
-                  <div className="row g-5">
+                  <div className="row g-3 g-md-5">
                     {arr.map((item) => (
                       <div key={item.id} className="col-md-6 col-xl-3">
                         <Link
