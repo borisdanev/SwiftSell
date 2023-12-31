@@ -29,7 +29,7 @@ const Footer = () => {
             <ul className="list-unstyled text-secondary">
               {["About Us", "Contact", "Privacy Policy"].map((item) => (
                 <li key={item}>
-                  <a>{item}</a>
+                  <p>{item}</p>
                 </li>
               ))}
             </ul>
@@ -38,13 +38,13 @@ const Footer = () => {
             <p className="h5">Support</p>
             <ul className="list-unstyled text-secondary">
               <li>
-                <a>FAQ</a>
+                <p>FAQ</p>
               </li>
               <li>
-                <a>Return Policy</a>
+                <p>Return Policy</p>
               </li>
               <li>
-                <a>Help Center</a>
+                <p>Help Center</p>
               </li>
             </ul>
           </div>
