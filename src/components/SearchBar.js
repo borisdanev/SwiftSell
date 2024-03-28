@@ -9,18 +9,19 @@ const SearchBar = () => {
   const [value, setValue] = useState("");
   const [visibleSuggestions, setVisibleSuggestions] = useState(false);
   const [suggestionsClicked, setSuggestionsClicked] = useState(false);
-  const { suggestions, isLoading, error } = useGetSuggestions(value);
+  const suggestions = useGetSuggestions(value);
+  const isLoading = false;
   const [clicked, setClicked] = useState(false);
   const screenWidth = useScreenWidth();
   const navigate = useNavigate();
   const handleChange = (e) => {
     setValue(e.target.value);
   };
-  const handleSubmit = (value) => {
-    setValue(value);
+  const handleSubmit = (product) => {
+    setValue(product.name);
     setVisibleSuggestions(false);
     setClicked(false);
-    navigate(`/products?query=${value}`);
+    navigate(`/product?id=${product.id}`);
   };
   const handleInputFocus = () => {
     setVisibleSuggestions(true);
@@ -84,12 +85,14 @@ const SearchBar = () => {
                       className="suggestion p-2 d-flex justify-content-between align-items-center"
                       onClick={() => {
                         handleSuggestionClick();
-                        handleSubmit(item.searchTerm);
+                        handleSubmit(item);
                       }}
                     >
-                      <p className="m-0">{item.searchTerm}</p>
+                      <p className="m-0">
+                        {typeof item === "string" ? item : item.name}
+                      </p>
                       <p className="m-0  text-secondary">
-                        {item.numberOfResults}
+                        {suggestions.length}
                       </p>
                     </li>
                   ))}

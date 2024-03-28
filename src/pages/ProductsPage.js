@@ -1,59 +1,36 @@
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import useGetProducts from "../hooks/useGetProducts";
-import useSetProducts from "../hooks/useSetProducts";
 import { MyContext } from "../contexts/MyContext";
 import ProductsList from "../components/ProductsList";
 import ServiceList from "../components/ServiceList";
 import Error from "../components/Error";
-const ProductsPage = ({ categories }) => {
+const ProductsPage = () => {
   const location = useLocation();
   const { setPathname } = useContext(MyContext);
   const [params] = useSearchParams();
-  const category = params.get("category");
-  const query = params.get("query");
-  const brandId = params.get("brandId");
-  const [products, setProducts] = useState([]);
-  const [length, setLength] = useState(30);
-  const setCategoryProducts = useSetProducts(setProducts, setLength);
-  const { productsList, isLoading, error } = useGetProducts(
-    products,
-    length,
-    query
-  );
+  const [type, setType] = useState("");
+  const [value, setValue] = useState("");
+  const { data: productsList, isLoading, error } = useGetProducts(type, value);
   useEffect(() => {
     window.scrollTo(0, 0);
     setPathname(location.pathname);
-  }, []);
-  useEffect(() => {
-    switch (category) {
-      case "clothing": {
-        const clothing = categories?.children[1]?.children[1];
-        setCategoryProducts(clothing, [6, 19, 4, 5]);
-        return;
-      }
-      case "accessories": {
-        const accessories = categories?.children[2]?.children[2];
-        setCategoryProducts(accessories, [3, 11, 13]);
-        return;
-      }
-      case "footwear": {
-        const footewear = categories?.children[3]?.children[1];
-        setCategoryProducts(footewear, [3, 9, 4]);
-        return;
-      }
-      case "sale": {
-        const saleProducts = categories?.children[13]?.children[1];
-        setCategoryProducts(saleProducts, [0], 20);
-        return;
-      }
+    const category = params.get("category");
+    const brand = params.get("brand");
+    const onSale = params.get("onSale");
+    if (category) {
+      setType("category");
+      setValue(category);
     }
-    const brand = categories?.children[5]?.children[1];
-    setCategoryProducts(brand, [brandId], 30);
-  }, [categories]);
-  useEffect(() => {
-    console.log(productsList);
-  }, [productsList]);
+    if (brand) {
+      setType("brand");
+      setValue(brand);
+    }
+    if (onSale) {
+      setType("onSale");
+      setValue(onSale);
+    }
+  }, []);
   let list;
   if (isLoading) list = Array(8).fill(null);
   else list = productsList;

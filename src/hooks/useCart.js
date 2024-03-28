@@ -4,20 +4,18 @@ const useCart = () => {
   const { cart, setCart } = useContext(MyContext);
   const addToCart = (product) => {
     const updatedCart = [product, ...cart];
-    if (cart.some((item) => item?.id === product?.id)) return;
+    if (cart.some((item) => item._id === product._id)) return;
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
-  const removeFromCart = (product) => {
-    const updatedCart = cart.filter((item) => item?.id !== product?.id);
+  const removeFromCart = (id) => {
+    const updatedCart = cart.filter((item) => item?._id !== id);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   const updateCart = (id, option) => {
     const updatedCart = cart.map((product) => {
-      if (product.id === id) {
-        return { ...product, quantity: option };
-      }
+      if (product._id === id) return { ...product, quantity: option };
       return product;
     });
     setCart(updatedCart);
@@ -28,7 +26,7 @@ const useCart = () => {
   };
   const getCartTotal = () =>
     cart.reduce((total, product) => {
-      return total + product?.price?.current?.value * product?.quantity;
+      return total + product.price * product.quantity;
     }, 0);
   return {
     addToCart,

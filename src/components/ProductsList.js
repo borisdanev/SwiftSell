@@ -9,15 +9,18 @@ const ProductsList = ({ productList, loading, oneRow, cart }) => {
   const startIndex = (currentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
   const visibleProducts = productList.slice(startIndex, endIndex);
+  console.log("prodcut list");
   useEffect(() => {
     const headerHeights = headerRefs.current.map((ref) => ref?.offsetHeight);
     const tallestHeaderHeight = Math.max(...headerHeights);
     headerRefs?.current.forEach((ref) => {
       if (ref) ref.style.height = `${tallestHeaderHeight}px`;
     });
+    console.log("product list useEfect");
   }, [visibleProducts]);
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log("product list useeffect 2");
   }, [currentPage]);
   const totalPages = Math.ceil(productList.length / productsPerPage);
   return (
@@ -29,13 +32,7 @@ const ProductsList = ({ productList, loading, oneRow, cart }) => {
               <SkeletonLoader height="450px" />
             ) : (
               <Product
-                src={item?.imageUrl}
-                title={item?.name}
-                price={item?.price}
-                isOutletPrice={item?.price.isOutletPrice}
-                id={item?.id}
                 product={item}
-                cart={cart}
                 headerRef={(el) => {
                   headerRefs.current[startIndex + i] = el;
                 }}

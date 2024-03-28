@@ -15,7 +15,7 @@ const Offer = () => {
               <p className="h1 text-white mb-4">
                 Get up to 85% off. Shop now and enjoy before offer ends
               </p>
-              <Link to="/products?category=sale">
+              <Link to="/products?onSale=true">
                 <Button className="btn-outline-light py-2 px-3">
                   Get it now
                 </Button>

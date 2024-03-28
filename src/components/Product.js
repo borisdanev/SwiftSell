@@ -1,35 +1,33 @@
 import { Link } from "react-router-dom";
 import AddButton from "./AddButton";
-const Product = ({ src, title, price, isOutletPrice, id, headerRef }) => {
+const Product = ({ product, headerRef }) => {
   return (
     <div className="product pt-4 pb-3 pb-sm-5">
-      <Link to={`/product?id=${id}`}>
-        <img src={`https://${src}`} className="img-fluid w-100" alt="product" />
+      <Link to={`/product?id=${product._id}`}>
+        <img src={product.coverImg} className="img-fluid w-100" alt="product" />
       </Link>
       <div className="content">
-        <Link className="text-dark" to={`/product?id=${id}`}>
-          <div
-            className="header d-flex justify-content-between"
-            ref={headerRef}
-          >
-            <p className="title fs-5">{title}</p>
-            <div>
-              <p className="text-secondary mb-0 text-decoration-line-through">
-                {price?.rrp.text}
-              </p>
-              <p
-                className={`price fw-bold fs-5 ${
-                  isOutletPrice ? "text-danger" : ""
-                }`}
-              >
-                {price?.current.text}
-              </p>
-            </div>
+        <Link className="text-dark" to={`/product?id=${product._id}`}>
+          <div className="header d-flex flex-column" ref={headerRef}>
+            <p className="title fs-5">{product.name}</p>
+            {product.onSale ? (
+              <div>
+                <p className="text-secondary mb-0 text-decoration-line-through">
+                  ${product.price}
+                </p>
+                {
+                  <p className={`price fw-bold h5 text-danger`}>
+                    ${product.salePrice}
+                  </p>
+                }
+              </div>
+            ) : (
+              <p className="h5 fw-bold">${product.price.toFixed(2)}</p>
+            )}
           </div>
         </Link>
         <AddButton
-          detailed={false}
-          product={id}
+          product={product}
           classNames="rounded-pill btn-outline-dark"
         />
       </div>

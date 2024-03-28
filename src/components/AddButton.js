@@ -1,24 +1,15 @@
-import { useEffect, useState } from "react";
-import useGetProductDetails from "../hooks/useGetProductDetails";
+import { useState } from "react";
 import Button from "./Button";
 import useCart from "../hooks/useCart";
 import { IoMdCheckmark } from "react-icons/io";
-const AddButton = ({ detailed, product, classNames }) => {
+const AddButton = ({ product, classNames }) => {
   const [clicked, setClicked] = useState(false);
-  const { data, isLoading } = useGetProductDetails(
-    product,
-    !detailed && clicked
-  );
   const { addToCart } = useCart();
   const handleClick = () => {
-    if (detailed) addToCart({ ...product, quantity: 1 });
+    addToCart({ ...product, quantity: 1 });
     setClicked(true);
     setTimeout(() => setClicked(false), 1500);
   };
-  useEffect(() => {
-    if (data) addToCart({ ...data, quantity: 1 });
-  }, [data]);
-
   return (
     <Button
       chevron={false}

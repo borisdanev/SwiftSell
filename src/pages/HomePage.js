@@ -3,16 +3,14 @@ import { MyContext } from "../contexts/MyContext";
 import { useLocation } from "react-router-dom";
 import StartSlider from "../components/StartSlider";
 import CategoriesList from "../components/CategoriesList";
-import BestsellerList from "../components/BestsellersList";
 import BrandList from "../components/BrandList";
 import Offer from "../components/Offer";
-import NewProducts from "../components/NewProducts";
 import ServiceList from "../components/ServiceList";
-const HomePage = ({ setInputValue, category }) => {
+import HeroProducts from "../components/HeroProducts";
+const HomePage = () => {
   const location = useLocation();
   const { setPathname } = useContext(MyContext);
   useEffect(() => {
-    setInputValue("");
     setPathname(location.pathname);
     if (location.hash) {
       const element = document.querySelector(location.hash);
@@ -23,10 +21,10 @@ const HomePage = ({ setInputValue, category }) => {
     <>
       <StartSlider />
       <CategoriesList />
-      <NewProducts category={category} />
+      <HeroProducts startIndex={4} endIndex={8} title="New Products" />
       <BrandList />
       <Offer />
-      <BestsellerList category={category} />
+      <HeroProducts startIndex={0} endIndex={4} title="Bestsellers" />
       <ServiceList />
     </>
   );

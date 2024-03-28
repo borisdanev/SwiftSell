@@ -1,7 +1,7 @@
 import useCart from "../hooks/useCart";
 import SelectInput from "./SelectInput";
 import { GrClose } from "react-icons/gr";
-const SavedProduct = ({ product, name, img, price, isOutletPrice }) => {
+const SavedProduct = ({ product }) => {
   const { removeFromCart } = useCart();
   return (
     <div className="saved-product row p-3 pe-0 position-relative">
@@ -13,49 +13,57 @@ const SavedProduct = ({ product, name, img, price, isOutletPrice }) => {
           right: "2rem",
           width: "0.5rem",
         }}
-        onClick={() => removeFromCart(product)}
+        onClick={() => removeFromCart(product?._id)}
       >
         <GrClose style={{ cursor: "pointer" }} />
       </span>
       <div className="col-lg-3">
         <img
-          src={`http://${img}`}
+          src={product?.coverImg}
           className="product-img img-fluid"
           alt="product "
         />
       </div>
       <div className="col-lg-8">
         <div className="d-flex justify-content-between align-items-start">
-          <div>
-            <p className="text-secondary fs-4 mb-0 text-decoration-line-through">
-              {price?.rrp.text}
-            </p>
-            <p
-              className={`price fw-bold ${isOutletPrice ? "text-danger" : ""}`}
-            >
-              {price?.current.text}
-            </p>
-          </div>
+          {product?.onSale ? (
+            <div>
+              <p className="text-secondary fs-4 mb-0 text-decoration-line-through">
+                {product?.price}
+              </p>
+              <p className={`price fw-bold text-danger`}>
+                {product?.salePrice}
+              </p>
+            </div>
+          ) : (
+            <p>{product?.price?.toFixed(2)}</p>
+          )}
         </div>
-        <p className="text-secondary fs-4">{name}</p>
+        <p className="text-secondary fs-4">{product?.name}</p>
         <div className="row">
           <div className="col-md-2 d-flex pt-2">
-            <span>{product?.variants[0]?.colour.toLowerCase()}</span>
+            <span>{product?.color}</span>
           </div>
           <div className="col-md-5">
-            <SelectInput
-              options={product.variants}
-              message="Size"
-              scrollable={product.variants.length > 6}
-            />
+            {product.sizes && (
+              <SelectInput
+                options={product.sizes}
+                initialValue={product.sizes[0]}
+                message="Size"
+                scrollable={product.sizes.length > 6}
+              />
+            )}
           </div>
           <div className="col-md-5">
-            <SelectInput
-              options={Array.from({ length: 10 }, (_, i) => i + 1)}
-              message="Qty"
-              id={product.id}
-              scrollable
-            />
+            {product._id && (
+              <SelectInput
+                options={Array.from({ length: 10 }, (_, i) => i + 1)}
+                initialValue={product.quantity}
+                message="Qty"
+                id={product._id}
+                scrollable
+              />
+            )}
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from "react";
 import useGetProductDetails from "../hooks/useGetProductDetails";
 import useScreenWidth from "../hooks/useScreenWidth";
 import { MyContext } from "../contexts/MyContext";
-import Color from "color";
 import SelectInput from "../components/SelectInput";
 import Button from "../components/Button";
 import ConditionalLoader from "../components/ConditionalLoader";
@@ -16,19 +15,8 @@ const ProductDetailPage = () => {
   const { setPathname } = useContext(MyContext);
   const location = useLocation();
   const [selectedImage, setSelectedImage] = useState("");
-  const [convertableColor, setConvertableColor] = useState(true);
-  const { data, isLoading } = useGetProductDetails(id, true, setSelectedImage);
+  const { data, isLoading } = useGetProductDetails(id, setSelectedImage);
   const screenWidth = useScreenWidth();
-  useEffect(() => {
-    try {
-      const color = data?.variants[0]?.colour?.toLowerCase();
-      color.includes("/")
-        ? color.split("/").forEach((color) => Color(color))
-        : Color(color);
-    } catch (err) {
-      setConvertableColor(false);
-    }
-  }, [data]);
   useEffect(() => {
     window.scrollTo(0, 0);
     setPathname(location.pathname);
@@ -42,13 +30,13 @@ const ProductDetailPage = () => {
               <ConditionalLoader isLoading={isLoading} height="500px">
                 <img
                   className="img-fluid mb-3 w-100"
-                  src={`http://${selectedImage}`}
+                  src={`${selectedImage}`}
                   alt="selected product"
                 />
               </ConditionalLoader>
               {screenWidth > 768 && (
                 <div className="row">
-                  {data?.media?.images.map((image, i) => (
+                  {data?.images?.map((url, i) => (
                     <div
                       key={i}
                       className={`col-md-6 col-lg-3 ${isLoading ? "pt-3" : ""}`}
@@ -56,8 +44,8 @@ const ProductDetailPage = () => {
                       <ConditionalLoader isLoading={isLoading} height="190px">
                         <img
                           className="img-fluid w-100"
-                          src={`http://${image.url}`}
-                          onClick={() => setSelectedImage(image.url)}
+                          src={`${url}`}
+                          onClick={() => setSelectedImage(url)}
                           alt="product"
                         />
                       </ConditionalLoader>
@@ -78,38 +66,12 @@ const ProductDetailPage = () => {
                   height="33px"
                   width="60px"
                 >
-                  <p className="price h3">{data?.price.current.text}</p>
+                  <p className="price h3">${data?.price}</p>
                 </ConditionalLoader>
               </div>
               <div className="d-flex align-items-center my-4">
                 <span className="h5 m-0 me-3">Color:</span>
-                {convertableColor ? (
-                  data?.variants[0].colour.includes("/") ? (
-                    <div className="product-color rounded-circle border shadow-sm">
-                      {data?.variants[0].colour.split("/").map((color) => (
-                        <div
-                          key={color}
-                          className="half-circle"
-                          style={{
-                            backgroundColor: Color(color.toLowerCase()),
-                            transform: "rotate(180deg)",
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div
-                      className="product-color rounded-circle border shadow-sm"
-                      style={{
-                        backgroundColor: Color(
-                          data?.variants[0].colour.toLowerCase()
-                        ),
-                      }}
-                    ></div>
-                  )
-                ) : (
-                  <span className="h5 m-0">{data?.variants[0].colour}</span>
-                )}
+                <span className="h5 m-0">{data.color}</span>
               </div>
               <div className="h5 my-4">
                 <ConditionalLoader
@@ -119,17 +81,18 @@ const ProductDetailPage = () => {
                 >
                   <p className="d-inline-block me-2 my-2">Size:</p>
                 </ConditionalLoader>
-                {data?.variants.length > 1 ? (
+                {data?.sizes?.length > 1 ? (
                   <ConditionalLoader isLoading={isLoading} height="30px">
                     <SelectInput
-                      options={data?.variants}
+                      options={data?.sizes}
+                      initialValue={data?.sizes[0]}
                       message="Select Size"
                       width="50%"
                     />
                   </ConditionalLoader>
                 ) : (
                   <ConditionalLoader isLoading={isLoading} height="2rem">
-                    <span>{data?.variants[0].displaySizeText}</span>
+                    <span>{"M"}</span>
                   </ConditionalLoader>
                 )}
               </div>
@@ -154,7 +117,6 @@ const ProductDetailPage = () => {
                   className="rounded-pill d-inline-block ms-3"
                 >
                   <AddButton
-                    detailed={true}
                     product={data}
                     classNames="btn btn-outline-success rounded-pill px-5 py-2 my-2 my-sm-0"
                   />

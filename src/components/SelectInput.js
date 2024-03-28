@@ -1,13 +1,17 @@
 import { useState } from "react";
 import useCart from "../hooks/useCart";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-const SelectInput = ({ options, message, scrollable, width, id }) => {
-  const { getCartProduct, updateCart } = useCart();
-  const product = getCartProduct(id);
+const SelectInput = ({
+  options,
+  initialValue,
+  message,
+  scrollable,
+  width,
+  id,
+}) => {
+  const { updateCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(
-    options[0].displaySizeText || product.quantity
-  );
+  const [selectedOption, setSelectedOption] = useState(initialValue);
   const handleClick = (option) => {
     setSelectedOption(option);
     updateCart(id, option);
@@ -42,9 +46,9 @@ const SelectInput = ({ options, message, scrollable, width, id }) => {
             <li
               key={option.id || option}
               className="ps-2"
-              onClick={() => handleClick(option.displaySizeText || option)}
+              onClick={() => handleClick(option)}
             >
-              {option.displaySizeText || option}
+              {option}
             </li>
           ))}
         </ul>

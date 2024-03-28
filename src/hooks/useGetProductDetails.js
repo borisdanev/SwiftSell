@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useFetchData from "./useFetchData";
-const useGetProductDetails = (id, clicked, setSelectedImage) => {
-  const url = `https://asos2.p.rapidapi.com/products/v3/detail?id=${id}&lang=en-US&store=US&sizeSchema=US&currency=USD`;
-  const { fetchData, data, isLoading, error } = useFetchData(url);
+const useGetProductDetails = (id, setSelectedImage) => {
+  const { data, isLoading, error, fetchData } = useFetchData();
   useEffect(() => {
-    if (!clicked) return;
-    fetchData();
-  }, [id, clicked, fetchData]);
+    if (typeof id === "string")
+      fetchData(`https://testapi-2ds0.onrender.com/products?id=${id}`);
+  }, [fetchData, id]);
   useEffect(() => {
-    if (setSelectedImage && data) setSelectedImage(data.media.images[0].url);
-  }, [data]);
+    if (setSelectedImage && data) setSelectedImage(data.coverImg);
+  }, [data, setSelectedImage]);
   return { data, isLoading };
 };
 export default useGetProductDetails;

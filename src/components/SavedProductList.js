@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { MyContext } from "../contexts/MyContext";
 import useCart from "../hooks/useCart";
 import SavedProduct from "./SavedProduct";
@@ -13,13 +13,7 @@ const SavedProductList = () => {
             key={item?.id || i}
             className={`${i < cart.length - 1 ? "border-bottom" : ""}`}
           >
-            <SavedProduct
-              product={item}
-              img={item?.media?.images[0]?.url}
-              name={item?.name}
-              price={item?.price}
-              isOutletPrice={item?.isOutletPrice}
-            />
+            <SavedProduct product={item} />
           </li>
         ))}
       </ul>
