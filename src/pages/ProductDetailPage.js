@@ -66,7 +66,16 @@ const ProductDetailPage = () => {
                   height="33px"
                   width="60px"
                 >
-                  <p className="price h3">${data?.price}</p>
+                  {!data.onSale ? (
+                    <p className="price h3">${data?.price}</p>
+                  ) : (
+                    <div className=" h3">
+                      <p className="text-decoration-line-through text-secondary h4">
+                        {data.price}
+                      </p>
+                      <p className="text-danger price">{data.salePrice}</p>
+                    </div>
+                  )}
                 </ConditionalLoader>
               </div>
               <div className="d-flex align-items-center my-4">

@@ -13,11 +13,11 @@ const Product = ({ product, headerRef }) => {
             {product.onSale ? (
               <div>
                 <p className="text-secondary mb-0 text-decoration-line-through">
-                  ${product.price}
+                  ${product.price.toFixed(2)}
                 </p>
                 {
                   <p className={`price fw-bold h5 text-danger`}>
-                    ${product.salePrice}
+                    ${product.salePrice.toFixed(2)}
                   </p>
                 }
               </div>
