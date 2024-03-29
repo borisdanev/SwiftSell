@@ -47,8 +47,12 @@ const SavedProduct = ({ product }) => {
           <div className="col-md-5">
             {product.sizes && (
               <SelectInput
-                options={product.sizes}
-                initialValue={product.sizes[0]}
+                options={
+                  product.sizes.length > 1 ? product.sizes : ["One Size"]
+                }
+                initialValue={
+                  product.sizes.length > 1 ? product.sizes[0] : "One Size"
+                }
                 message="Size"
                 scrollable={product.sizes.length > 6}
               />

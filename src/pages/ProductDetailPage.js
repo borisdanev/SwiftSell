@@ -92,7 +92,7 @@ const ProductDetailPage = () => {
                   </ConditionalLoader>
                 ) : (
                   <ConditionalLoader isLoading={isLoading} height="2rem">
-                    <span>{"M"}</span>
+                    <span className="text-secondary">{"One Size"}</span>
                   </ConditionalLoader>
                 )}
               </div>
