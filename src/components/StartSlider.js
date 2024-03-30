@@ -20,33 +20,28 @@ const StartSlider = () => {
     nextArrow: <NextArrow />,
   };
   return (
-    <HelmetProvider>
-      <section className="start">
-        <Helmet>
-          <link rel="preload" as="image" href="../images/men_fashion.jpg" />
-        </Helmet>
-        <div className="container-fluid p-0">
-          <Slider
-            {...settings}
-            prevArrow={<PrevArrow />}
-            nextArrow={<NextArrow />}
-          >
-            <Slide
-              src={MenFashion}
-              text="Upgrade your closet with our premium quality fabrics and materials."
-            />
-            <Slide
-              src={FitStyle}
-              text={"Find your perfect fit with our range of sizes and styles."}
-            />
-            <Slide
-              src={ManWomanFashion}
-              text="Shop with us and get runway-inspired looks at affordable prices."
-            />
-          </Slider>
-        </div>
-      </section>
-    </HelmetProvider>
+    <section className="start">
+      <div className="container-fluid p-0">
+        <Slider
+          {...settings}
+          prevArrow={<PrevArrow />}
+          nextArrow={<NextArrow />}
+        >
+          <Slide
+            src={MenFashion}
+            text="Upgrade your closet with our premium quality fabrics and materials."
+          />
+          <Slide
+            src={FitStyle}
+            text={"Find your perfect fit with our range of sizes and styles."}
+          />
+          <Slide
+            src={ManWomanFashion}
+            text="Shop with us and get runway-inspired looks at affordable prices."
+          />
+        </Slider>
+      </div>
+    </section>
   );
 };
 export default StartSlider;

@@ -67,14 +67,14 @@ const ProductDetailPage = () => {
                   width="60px"
                 >
                   {!data.onSale ? (
-                    <p className="price h3">${data?.price.toFixed(2)}</p>
+                    <p className="price h3">${data?.price?.toFixed(2)}</p>
                   ) : (
                     <div className=" h3">
                       <p className="text-decoration-line-through text-secondary h4">
-                        {data.price.toFixed(2)}
+                        {data?.price?.toFixed(2)}
                       </p>
                       <p className="text-danger price">
-                        {data.salePrice.toFixed(2)}
+                        {data?.salePrice?.toFixed(2)}
                       </p>
                     </div>
                   )}
