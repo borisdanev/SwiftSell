@@ -1,4 +1,4 @@
-import Image from "../images/limited_offer.jpg";
+import Image from "../images/limited_offer.webp";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 const Offer = () => {

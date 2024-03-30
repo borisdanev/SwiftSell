@@ -3,15 +3,15 @@ import Slider from "react-slick";
 import PrevArrow from "./PrevArrow";
 import NextArrow from "./NextArrow";
 import Slide from "./Slide";
-import MenFashion from "../images/men_fashion.jpg";
-import FitStyle from "../images/fit_style.jpg";
-import ManWomanFashion from "../images/man_woman_fashion.jpg";
+import MenFashion from "../images/men_fashion.webp";
+import FitStyle from "../images/fit_style.webp";
+import ManWomanFashion from "../images/man_woman_fashion.webp";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 const StartSlider = () => {
   const settings = {
     dots: true,
     dotsClass: "slick-dots custom-dots",
-    customPaging: () => <button></button>,
+    customPaging: () => <button aria-label="Slice navigation"></button>,
     infinite: true,
     speed: 500,
     slidesToShow: 1,

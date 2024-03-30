@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import Clothing from "../images/clothing.jpg";
-import Accessories from "../images/accessories.jpg";
-import FootWear from "../images/footwear.jpg";
+import Clothing from "../images/clothing.webp";
+import Accessories from "../images/accessories.webp";
+import FootWear from "../images/footwear.webp";
 const Categories = () => {
   const navigate = useNavigate();
   const handleClick = (category) => {

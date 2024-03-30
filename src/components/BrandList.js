@@ -4,10 +4,10 @@ import Nike from "../images/nike.jpg";
 import NorthFace from "../images/north_face.png";
 import JackJones from "../images/jack_jones.jpg";
 import TommyHilfiger from "../images/tommy_hilfiger.png";
-import CalvinKlein from "../images/calvin-klein.jpg";
+import CalvinKlein from "../images/calvin-klein.webp";
 import RiverIsland from "../images/river_island.jpg";
 import OnlyAndSons from "../images/only_and_sons.jpg";
-import Adidas from "../images/adidas.jpg";
+import Adidas from "../images/adidas.webp";
 import useScreenWidth from "../hooks/useScreenWidth";
 const BrandList = () => {
   const screenWidth = useScreenWidth();

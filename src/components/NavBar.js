@@ -21,6 +21,7 @@ const NavBar = () => {
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <Hamburger
+                  label="burger menu"
                   toggled={isOpen}
                   className={`something"}`}
                   color={`${isOpen ? "#FFFFFF" : "#000000"}`}
