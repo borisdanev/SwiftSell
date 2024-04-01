@@ -312,6 +312,9 @@ input:focus {
 .cart img {
   width: 9rem;
 }
+.no-results-icon {
+  font-size: clamp(4rem, 11vw, 8rem);
+}
 @keyframes slide {
   0% {
     transform: translateX(-100%);

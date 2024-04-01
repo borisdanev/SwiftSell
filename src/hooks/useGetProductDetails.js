@@ -3,7 +3,7 @@ import useFetchData from "./useFetchData";
 const useGetProductDetails = (id, setSelectedImage) => {
   const { data, isLoading, error, fetchData } = useFetchData();
   useEffect(() => {
-    if (typeof id === "string")
+    if (id && typeof id === "string")
       fetchData(`https://swiftsell-api.onrender.com/products?id=${id}`);
   }, [fetchData, id]);
   useEffect(() => {
