@@ -28,15 +28,15 @@ const SavedProduct = ({ product }) => {
         <div className="d-flex justify-content-between align-items-start">
           {product?.onSale ? (
             <div>
-              <p className="text-secondary fs-4 mb-0 text-decoration-line-through">
-                {product?.price}
+              <p className="text-secondary h6 mb-0 text-decoration-line-through">
+                ${product?.price.toFixed(2)}
               </p>
-              <p className={`price fw-bold text-danger`}>
-                {product?.salePrice}
+              <p className={`price fw-bold text-danger h5`}>
+                ${product?.salePrice.toFixed(2)}
               </p>
             </div>
           ) : (
-            <p>{product?.price?.toFixed(2)}</p>
+            <p className="h5">${product?.price?.toFixed(2)}</p>
           )}
         </div>
         <p className="text-secondary fs-4">{product?.name}</p>

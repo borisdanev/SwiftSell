@@ -36,21 +36,29 @@ const ProductDetailPage = () => {
               </ConditionalLoader>
               {screenWidth > 768 && (
                 <div className="row">
-                  {data?.images?.map((url, i) => (
-                    <div
-                      key={i}
-                      className={`col-md-6 col-lg-3 ${isLoading ? "pt-3" : ""}`}
-                    >
-                      <ConditionalLoader isLoading={isLoading} height="190px">
-                        <img
-                          className="img-fluid w-100"
-                          src={`${url}`}
-                          onClick={() => setSelectedImage(url)}
-                          alt="product"
-                        />
-                      </ConditionalLoader>
-                    </div>
-                  ))}
+                  {Array(4)
+                    .fill(null)
+                    .map((url, i) => (
+                      <div
+                        key={i}
+                        className={`col-md-6 col-lg-3 ${
+                          isLoading ? "pt-3" : ""
+                        }`}
+                      >
+                        <ConditionalLoader isLoading={isLoading} height="190px">
+                          {data.images?.[i] ? (
+                            <img
+                              className="img-fluid w-100"
+                              src={data.images?.[i]}
+                              onClick={() => setSelectedImage(data.images?.[i])}
+                              alt="product"
+                            />
+                          ) : (
+                            <></>
+                          )}
+                        </ConditionalLoader>
+                      </div>
+                    ))}
                 </div>
               )}
             </div>
