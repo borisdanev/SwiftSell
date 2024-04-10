@@ -7,7 +7,7 @@ const useGetSuggestions = (query) => {
     fetchData("https://swiftsell-api.onrender.com/products");
   }, [fetchData]);
   useEffect(() => {
-    if (!products) return;
+    if (!products || products.length === 0) return;
     const suggestions = products
       .map((product) => ({ name: product.name, id: product._id }))
       .filter((product) =>

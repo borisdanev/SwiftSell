@@ -18,7 +18,7 @@ const SearchBar = () => {
     setValue(e.target.value);
   };
   const handleSubmit = (product) => {
-    setValue(product.name);
+    setValue("");
     setVisibleSuggestions(false);
     setClicked(false);
     navigate(`/product?id=${product.id}`);
